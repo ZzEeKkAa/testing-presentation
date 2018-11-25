@@ -1,0 +1,24 @@
+hash: 3d990beb651b6230a2b93e0ea874ce5cd226079f579e9d3f9da52384a96c595b
+updated: 2018-11-25T06:50:43.461742+02:00
+imports:
+- name: github.com/jonboulle/clockwork
+  version: 2eee05ed794112d45db504eb05aa693efd2b8b09
+- name: github.com/sergi/go-diff
+  version: 1744e2970ca51c86172c8190fadad617561ed6e7
+  subpackages:
+  - diffmatchpatch
+- name: github.com/stretchr/testify
+  version: f35b8ab0b5a2cef36673838d662e249dd9c94686
+  subpackages:
+  - assert
+- name: gopkg.in/d4l3k/messagediff.v1
+  version: 29f32d820d112dbd66e58492a6ffb7cc3106312b
+testImports:
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: 792786c7400a136282c1664665ae0a8db921c6c2
+  subpackages:
+  - difflib

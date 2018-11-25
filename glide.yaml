@@ -1,0 +1,12 @@
+package: github.com/ZzEeKkAa/testing-presentation
+import:
+- package: github.com/stretchr/testify
+  version: ~1.2.2
+- package: gopkg.in/d4l3k/messagediff.v1
+  version: ~1.2.1
+- package: github.com/sergi/go-diff
+  version: ~1.0.0
+  subpackages:
+  - diffmatchpatch
+- package: github.com/jonboulle/clockwork
+  version: ~0.1.0

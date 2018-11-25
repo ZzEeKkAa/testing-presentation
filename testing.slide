@@ -1,0 +1,246 @@
+Unit tests in Go
+12:00 25 Nov 2018
+Tags: golang, unit-tests
+
+Yevhenii Havrylko
+https://github.com/ZzEeKkAa
+egavrilko@gmail.com
+
+: To read in its presentable format:
+: 1) Install go: https://golang.org/doc/install
+: 2) Install the present tool: go install golang.org/x/tools/cmd/present
+: 3) Run the present tool on this slide
+
+* Intro
+
+* Intro
+
+- Writing tested code makes development faster.
+- Write test at the time you right function.
+- Don't write test 'later'.
+- Writing tests make you write good code.
+
+* Basics
+
+* Basics
+
+.code simple/add.go /^func Add/,/^}/
+
+add.go
+
+.code simple/add_test.go /^func TestAdd/,/FAIL$/
+
+add_test.go
+
+#################################################### Formatting error message
+
+* Formatting error message
+
+* Formatting error message
+
+- try to send useful information to error message
+- got before want
+- diff (-want) (+got)
+
+Libraries
+
+- testify ( *go* *get* *github.com/stretchr/testify* )
+- clockwork ( *go* *get* *github.com/jonboulle/clockwork* )
+- messagediff ( *go* *get* *github.com/d4l3k/messagediff* )
+
+* Formatting error message [Bad Practice]
+
+.code simple/add_test.go /^func TestAdd/,/FAIL$/
+
+add_test.go
+
+* Formatting error message [Good Practice]
+
+.code formatting/add_test.go /^func TestAdd/,/FAIL$/
+
+add_test.go
+
+* Testify
+
+Package testify is a set of packages that provide many tools for testifying that your code will behave as you intend.
+
+testify contains the following packages:
+
+The *assert* package provides a comprehensive set of assertion functions that tie in to the Go testing system.
+
+The *http* package contains tools to make it easier to test http activity using the Go testing system.
+
+The *mock* package provides a system by which it is possible to mock your objects and verify calls are happening as expected.
+
+The *suite* package provides a basic structure for using structs as testing suites, and methods on those structs as tests. It includes setup/teardown functionality in the way of interfaces.
+
+* Formatting error message [Good Practice]
+
+.code formatting/add_assert_test.go /^func TestAdd/,/FAIL$/
+
+add_test.go
+
+######################################################## Formatting complex error message
+
+* Formatting complex error message
+
+* Formatting complex error message [Good Practice]
+
+.code formatting/cat.go /^type Cat/,/^\n/
+
+.code formatting/cat.go /^func NewCat/,/^$/
+
+cat.go
+
+* Formatting complex error message [Good Practice]
+
+.code formatting/cat_test.go /^func TestNewCat/,/^\n/
+
+cat_test.go
+
+* Formatting complex error message [Good Practice]
+
+output
+
+.code formatting/cat_test.go /^//FAIL/,/FAIL$/
+
+
+* Formatting error message [Library]
+
+add_assert_test.go
+
+.code formatting/add_assert_test.go /^func TestAdd/,/FAIL$/
+
+######################################################### Stable tests
+
+* Stable tests
+
+* Stable tests [Bad example]
+
+.code stable/inc-bad.go /^type/,/^$/
+.code stable/inc-bad.go /^func/,/^$/
+
+stable.go
+
+* Stable tests [Bad example]
+
+.code stable/inc-bad_test.go /^func TestInc/,/^$/
+
+stable_test.go
+
+* Stable tests [Bad example]
+
+.code stable/inc-bad_test.go /FAIL/,/FAIL$/
+
+* Stable tests [Good example]
+
+.code stable/inc-good.go /^type/,/^$/
+.code stable/inc-good.go /^func/,/^$/
+
+stable.go
+
+* Stable tests [Good example]
+
+.code stable/inc-good_test.go /^func TestInc/,/^$/
+
+stable_test.go
+
+* Stable tests [Good example]
+
+.code stable/inc-good_test.go /FAIL/,/FAIL$/
+
+
+######################################################### Subtests
+
+* Subtests
+
+* Subtests [Bad example]
+
+.code subtest/time_test.go /^func TestTime/,/^$/
+
+time_test.go
+
+* Subtests [Bad example]
+
+.code subtest/time_test.go /FAIL/,/FAIL$/
+
+output
+
+* Subtests [Good example]
+
+.code subtest/time_test.go /^func TestTime/,/^$/
+
+time_test.go
+
+* Subtests [Good example]
+
+.code subtest/time_test.go /FAIL/,/FAIL$/
+
+output
+
+
+################################################## Fakers and mocking
+
+* Fakers and mocking
+
+* Fakers and mocking
+
+- How long one unit test runs?
+- Average time of a good unit test is 10ms.
+- Define interfaces in modules, that use mocking model.
+
+* Fakers and mocking
+
+.code fakers/sms.go /^type/,/^$/
+.code fakers/sms.go /^func/,/^$/
+
+sms.go
+
+* Fakers and mocking
+
+.code fakers/bank.go /^type Message/,/^$/
+.code fakers/bank.go /^type Bank/,/^$/
+.code fakers/bank.go /^func/,/^$/
+
+bank.go
+
+* Fakers and mocking
+
+.code fakers/bank.go /^func main/,/^$/
+
+main.go
+
+* Fakers and mocking
+
+.code fakers/bank_test.go /FAIL/,/FAIL$/
+
+output
+
+################################################## Clock
+
+* Clock mocking
+
+* Clock mocking [Bad example]
+
+.code time/connect-bad.go /^func Connect/,/^$/
+
+connect-bad.go
+
+* Clock mocking [Good example]
+
+.code time/connect-good.go /^func Connect/,/^$/
+
+connect-good.go
+
+* Clock mocking [Good example]
+
+.code time/connect-good_test.go /^func TestConnect/,/^$/
+
+connect-good_test.go
+
+* Clock mocking [Good example]
+
+.code time/connect-good_test.go /FAIL/,/FAIL$/
+
+output
+
