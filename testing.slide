@@ -11,6 +11,17 @@ egavrilko@gmail.com
 : 2) Install the present tool: go install golang.org/x/tools/cmd/present
 : 3) Run the present tool on this slide
 
+* Content
+
+- Intro
+- Basics
+- Formatting error message
+- Formatting complex error message
+- Stable tests
+- Subtests
+- Fakers and mocking
+- Clocks
+
 * Intro
 
 * Intro
@@ -19,7 +30,7 @@ egavrilko@gmail.com
 - Write test at the time you right function.
 - Don't write test 'later'.
 - Writing tests make you write good code.
-
+- Test is a part of code.
 * Basics
 
 * Basics
@@ -48,6 +59,17 @@ Libraries
 - clockwork ( *go* *get* *github.com/jonboulle/clockwork* )
 - messagediff ( *go* *get* *github.com/d4l3k/messagediff* )
 
+* Formatting error message with testify
+
+Package testify is a set of packages that provide many tools for testifying that your code will behave as you intend.
+
+testify contains the following packages:
+
+The *assert/require* package provides a comprehensive set of assertion functions that tie in to the Go testing system.
+
+The *mock* package provides a system by which it is possible to mock your objects and verify calls are happening as expected.
+
+
 * Formatting error message [Bad Practice]
 
 .code simple/add_test.go /^func TestAdd/,/FAIL$/
@@ -59,20 +81,6 @@ add_test.go
 .code formatting/add_test.go /^func TestAdd/,/FAIL$/
 
 add_test.go
-
-* Testify
-
-Package testify is a set of packages that provide many tools for testifying that your code will behave as you intend.
-
-testify contains the following packages:
-
-The *assert* package provides a comprehensive set of assertion functions that tie in to the Go testing system.
-
-The *http* package contains tools to make it easier to test http activity using the Go testing system.
-
-The *mock* package provides a system by which it is possible to mock your objects and verify calls are happening as expected.
-
-The *suite* package provides a basic structure for using structs as testing suites, and methods on those structs as tests. It includes setup/teardown functionality in the way of interfaces.
 
 * Formatting error message [Good Practice]
 
@@ -228,6 +236,7 @@ connect-bad.go
 
 * Clock mocking [Good example]
 
+.code time/connect-good.go /^var/,/^$/
 .code time/connect-good.go /^func Connect/,/^$/
 
 connect-good.go
